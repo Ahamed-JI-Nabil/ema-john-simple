@@ -1,35 +1,42 @@
-import React, { useEffect, useState } from 'react';
+/* import React, { useEffect, useState } from 'react';
+import useCart from '../../hooks/useCart';
+import useProducts from '../../hooks/useProducts';
 import { addToDb, getShoppingCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
-import './Shop.css';
+import './Shop.css'
 
 const Shop = () => {
-    const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
+
+    const [products, setProducts] = useProducts()
+
+    // const [cart, setCart] = useCart(products)
+    const [cart, setCart] = useState([])
+
 
     useEffect(() => {
-        fetch('products.json')
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, []);
-
-    useEffect(() => {
-        const storedCart = getShoppingCart();
-        const savedCart = [];
+        const storedCart = getShoppingCart()
+        const saveCart = []
         for (const id in storedCart) {
-            const addedProduct = products.find(product => product.id === id);
+            const addedProduct = products.find(product => product.id === id)
             if (addedProduct) {
-                const quantity = storedCart[id];
+                const quantity = storedCart[id]
                 addedProduct.quantity = quantity;
-                savedCart.push(addedProduct);
+                saveCart.push(addedProduct)
+
             }
         }
-        setCart(savedCart);
+        setCart(saveCart)
     }, [products])
 
+
+
+
+
+
+
     const handleAddToCart = (selectedProduct) => {
-        // console.log(selectedProduct);
+        console.log(selectedProduct);
         let newCart = [];
         const exists = cart.find(product => product.id === selectedProduct.id);
         if (!exists) {
@@ -45,9 +52,11 @@ const Shop = () => {
         setCart(newCart);
         addToDb(selectedProduct.id);
     }
-    // console.log(cart)
+
+    console.log(cart);
+
     return (
-        <div className='shop-container'>
+        <div className="shop-container">
             <div className="product-container">
                 {
                     products.map(product => <Product
@@ -64,4 +73,4 @@ const Shop = () => {
     );
 };
 
-export default Shop;
+export default Shop; */
