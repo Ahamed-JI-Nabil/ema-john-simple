@@ -14,6 +14,7 @@ const Header = () => {
         signOut(auth)
     }
 
+    console.log(user)
 
     return (
         <nav className="header">
@@ -26,7 +27,7 @@ const Header = () => {
                 <Link to="/shipment">Shipment</Link>
                 <Link to="/about">About</Link>
                 {
-                    user ? <button onClick={handleSignOut} className=''>SingOut</button> : <Link to="/login">LogIn</Link>
+                    user[0] ? <Link to="/login" onClick={handleSignOut}>SignOut</Link> : <Link to="/login">LogIn</Link>
                 }
             </div>
         </nav>
